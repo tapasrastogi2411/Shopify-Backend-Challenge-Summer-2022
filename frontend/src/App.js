@@ -21,7 +21,7 @@ function App() {
       <label>Price</label>
       <input type="number" />
 
-      <button> Add new inventory item</button>
+      <button> Add new item</button>
 
     </div>
   );
