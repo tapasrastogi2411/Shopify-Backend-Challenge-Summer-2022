@@ -6,7 +6,7 @@ class App extends Component {
     return (
       
         <div className="container">
-          <h2>MERN-Stack Todo App</h2>
+          <h2>Inventory Management System</h2>
         </div>
       
     );
