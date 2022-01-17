@@ -4,12 +4,15 @@
   "description": "Backend for an inventory management system",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "devStart": "nodemon app.js"
+    
   },
   "author": "Tapas Rastogi",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.2",
-    "mongoose": "^6.1.7"
+    "mongoose": "^6.1.7",
+    "nodemon": "^2.0.15"
   }
 }
