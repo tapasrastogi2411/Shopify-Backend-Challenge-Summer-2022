@@ -18,7 +18,7 @@ function App() {
   const [isPut, setIsPut] = useState(false);
   const [updatedItem, setUpdatedItem] = useState({
     title: "",
-    description: "", 
+    description: "",
     id: ""
 
   })
@@ -58,8 +58,8 @@ function App() {
     alert("Item deleted successfully! Please refresh the page to see the changes");
   }
 
-  // Function to update an item
-  function updateItem(id) {
+  // Function to open an update form an item
+  function openUpdate(id) {
     setIsPut(true)
     setUpdatedItem(prevInput => {
 
@@ -72,47 +72,77 @@ function App() {
     })
 
   }
+
+  // Function to actually update an existing item in the database
+  function updateItem(id) {
+
+    Axios.put(`http://localhost:3001/update/${id}`, updatedItem)
+    alert("Item is successfully updated! Please refresh the page to see the changes")
+    console.log(`item with id: ${id} updated`)
+  }
+
+
   return (
     <div className="App">
       <h1> Inventory Manager</h1>
 
+      {!isPut ?
 
-      <label>Item Name </label>
-      <input
-        type="text"
-        onChange={(event) => {
-          setItemName(event.target.value);
-        }} />
+        (<><label>Item Name </label><input
+          type="text"
+          onChange={(event) => {
+            setItemName(event.target.value);
+          }}
 
-      <label>Brand </label>
-      <input
-        type="text"
-        onChange={(event) => {
-          setBrandName(event.target.value);
-        }} />
+        /><label>Brand </label><input
+            type="text"
+            onChange={(event) => {
+              setBrandName(event.target.value);
+            }}
 
-      <label>Item Description</label>
-      <input
-        type="text"
-        onChange={(event) => {
-          setItemDescription(event.target.value);
-        }} />
+          /><label>Item Description</label><input
+            type="text"
+            onChange={(event) => {
+              setItemDescription(event.target.value);
+            }}
 
-      <label>Quantity</label>
-      <input
-        type="number"
-        onChange={(event) => {
-          setQuantity(event.target.value);
-        }} />
+          /><label>Quantity</label><input
+            type="number"
+            onChange={(event) => {
+              setQuantity(event.target.value);
+            }}
 
-      <label>Price</label>
-      <input
-        type="number"
-        onChange={(event) => {
-          setPrice(event.target.value);
-        }} />
+          /><label>Price</label><input
+            type="number"
+            onChange={(event) => {
+              setPrice(event.target.value);
+            }}
 
-      <button onClick={addToList}> Add new item</button>
+          /><button onClick={addToList}> Add new item</button></>) :
+
+        (
+          <><label>Item Name </label><input
+            type="text"
+            onChange={(event) => {
+              setItemName(event.target.value);
+            }} /><label>Brand </label><input
+              type="text"
+              onChange={(event) => {
+                setBrandName(event.target.value);
+              }} /><label>Item Description</label><input
+              type="text"
+              onChange={(event) => {
+                setItemDescription(event.target.value);
+              }} /><label>Quantity</label><input
+              type="number"
+              onChange={(event) => {
+                setQuantity(event.target.value);
+              }} /><label>Price</label><input
+              type="number"
+              onChange={(event) => {
+                setPrice(event.target.value);
+              }} /><button onClick={() => updateItem(updatedItem.id)}> Update existing item</button></>
+        )}
 
       <h1>Item List</h1>
 
@@ -128,13 +158,13 @@ function App() {
           <h3>Price($): {val.Price}</h3>
           {""}
 
-          <button onClick={() => updateItem(val._id)}>Update</button>
+          <button onClick={() => openUpdate(val._id)}>Update</button>
           <button onClick={() => deleteItem(val._id)}>Delete item</button>
         </div>
       })}
 
     </div>
-  );  
+  );
 }
 
 export default App;
