@@ -128,7 +128,7 @@ function App() {
           <h3>Price($): {val.Price}</h3>
           {""}
 
-          <button onClick={() => updateItem(val_.id)}>Update</button>
+          <button onClick={() => updateItem(val._id)}>Update</button>
           <button onClick={() => deleteItem(val._id)}>Delete item</button>
         </div>
       })}
