@@ -125,19 +125,27 @@ function App() {
             type="text"
             onChange={(event) => {
               setItemName(event.target.value);
-            }} /><label>Brand </label><input
+            }}
+            
+            /><label>Brand </label><input
               type="text"
               onChange={(event) => {
                 setBrandName(event.target.value);
-              }} /><label>Item Description</label><input
+              }}
+              
+              /><label>Item Description</label><input
               type="text"
               onChange={(event) => {
                 setItemDescription(event.target.value);
-              }} /><label>Quantity</label><input
+              }}
+              
+              /><label>Quantity</label><input
               type="number"
               onChange={(event) => {
                 setQuantity(event.target.value);
-              }} /><label>Price</label><input
+              }}
+              
+              /><label>Price</label><input
               type="number"
               onChange={(event) => {
                 setPrice(event.target.value);
