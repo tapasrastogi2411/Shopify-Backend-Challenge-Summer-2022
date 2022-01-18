@@ -14,6 +14,15 @@ function App() {
   //Creating a useState to display the database items onto the frontend
   const [itemList, setItemList] = useState([]);
 
+  // Creating a useState to update the items already in the database
+  const [isPut, setIsPut] = useState(false);
+  const [updatedItem, setUpdatedItem] = useState({
+    title: "",
+    description: "", 
+    id: ""
+
+  })
+
   //Calling the useEffect hook here so that we can see the items currently in the database on the frontend
 
   useEffect(() => {
@@ -36,13 +45,32 @@ function App() {
       price: price
     });
 
+    alert("Item added successfully! Please refresh the page to see the changes");
+
   }
 
+  // Function to delete an item
   const deleteItem = (id) => {
     Axios.delete(`http://localhost:3001/delete/${id}`, {
 
-
     });
+
+    alert("Item deleted successfully! Please refresh the page to see the changes");
+  }
+
+  // Function to update an item
+  function updateItem(id) {
+    setIsPut(true)
+    setUpdatedItem(prevInput => {
+
+      return (
+        {
+          ...prevInput,
+          id: id
+        }
+      )
+    })
+
   }
   return (
     <div className="App">
@@ -100,7 +128,7 @@ function App() {
           <h3>Price($): {val.Price}</h3>
           {""}
 
-          <button>Update</button>
+          <button onClick={() => updateItem(val_.id)}>Update</button>
           <button onClick={() => deleteItem(val._id)}>Delete item</button>
         </div>
       })}
