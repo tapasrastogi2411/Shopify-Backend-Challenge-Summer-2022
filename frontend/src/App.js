@@ -84,7 +84,13 @@ function App() {
       {itemList.map((val, key) => {
 
         return <div key={key} className='item'>
-          <h1>{val.Name}</h1> <h1>{val.Description}</h1>{""}
+          <p>itemID: {val._id}</p>
+          <h3>Name: {val.Name}</h3>
+          <h3>Brand: {val.Brand}</h3>
+          <h3>Description: {val.Description}</h3>
+          <h3>Quantity: {val.Quantity}</h3>
+          <h3>Price($): {val.Price}</h3>
+          {""}
           <button>Delete item</button>
         </div>
       })}
