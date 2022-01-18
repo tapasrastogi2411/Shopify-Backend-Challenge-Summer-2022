@@ -83,7 +83,10 @@ function App() {
 
       {itemList.map((val, key) => {
 
-        return <div key={key}> <h1>{val.Name}</h1> <h1>{val.Description}</h1>{""} </div>
+        return <div key={key} className='item'>
+          <h1>{val.Name}</h1> <h1>{val.Description}</h1>{""}
+          <button>Delete item</button>
+        </div>
       })}
 
     </div>
