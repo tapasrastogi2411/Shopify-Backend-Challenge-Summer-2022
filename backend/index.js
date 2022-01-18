@@ -37,6 +37,20 @@ app.post('/insert', async (req, res) => {
 
 })
 
+// Creating the `read` route of the CRUD functionality - This allows a user to see what items are currently present in the inventory/database
+
+app.get('/read', async (req, res) => {
+
+    itemModel.find({}, (err, result) => {
+
+        if (err) {
+            res.send(err)
+        }
+
+        res.send(result)
+    })
+});
+
 // Starting the server
 app.listen(process.env.PORT ?? 3001, () => {
     console.log('Server running on port 3001...')

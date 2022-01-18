@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Axios from 'axios' // This helps us to send HTTP requests between the FE and the BE
 import './App.css';
 
@@ -11,11 +11,24 @@ function App() {
   const [quantity, setQuantity] = useState(0)
   const [price, setPrice] = useState(0)
 
+  //Creating a useState to display the database items onto the frontend
+  const [itemList, setItemList] = useState([]);
+
+  //Calling the useEffect hook here so that we can see the items currently in the database on the frontend
+
+  useEffect(() => {
+
+    Axios.get("http://localhost:3001/read").then((response) => {
+      setItemList(response.data)
+    })
+
+  }, [])
+
   // Function to add the useState values into our MongoDB database 
 
   const addToList = () => {
     Axios.post("http://localhost:3001/insert", {
-      
+
       itemName: itemName,
       brandName: brandName,
       itemDescription: itemDescription,
@@ -65,6 +78,13 @@ function App() {
         }} />
 
       <button onClick={addToList}> Add new item</button>
+
+      <h1>Item List</h1>
+
+      {itemList.map((val, key) => {
+
+        return <div key={key}> <h1>{val.Name}</h1> <h1>{val.Description}</h1>{""} </div>
+      })}
 
     </div>
   );
