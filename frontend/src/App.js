@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Axios from 'axios' // This helps us to send HTTP requests between the FE and the BE
 import './App.css';
 
 function App() {
@@ -10,7 +11,19 @@ function App() {
   const [quantity, setQuantity] = useState(0)
   const [price, setPrice] = useState(0)
 
+  // Function to add the useState values into our MongoDB database 
 
+  const addToList = () => {
+    Axios.post("http://localhost:3001/insert", {
+      
+      itemName: itemName,
+      brandName: brandName,
+      itemDescription: itemDescription,
+      quantity: quantity,
+      price: price
+    });
+
+  }
   return (
     <div className="App">
       <h1> Inventory Manager</h1>
@@ -51,7 +64,7 @@ function App() {
           setPrice(event.target.value);
         }} />
 
-      <button> Add new item</button>
+      <button onClick={addToList}> Add new item</button>
 
     </div>
   );
