@@ -51,6 +51,17 @@ app.get('/read', async (req, res) => {
     })
 });
 
+
+// Creating the `delete` route of the CRUD functionality - This allows a user to delete an item already in the database
+
+app.delete('/delete/:id', async (req, res) => {
+
+    const id = req.params.id
+    await itemModel.findByIdAndRemove(id).exec();
+    res.send("Item deleted!")
+
+})
+
 // Starting the server
 app.listen(process.env.PORT ?? 3001, () => {
     console.log('Server running on port 3001...')

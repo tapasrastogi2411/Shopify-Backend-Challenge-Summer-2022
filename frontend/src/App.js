@@ -37,6 +37,13 @@ function App() {
     });
 
   }
+
+  const deleteItem = (id) => {
+    Axios.delete(`http://localhost:3001/delete/${id}`, {
+
+
+    });
+  }
   return (
     <div className="App">
       <h1> Inventory Manager</h1>
@@ -84,6 +91,7 @@ function App() {
       {itemList.map((val, key) => {
 
         return <div key={key} className='item'>
+
           <p>itemID: {val._id}</p>
           <h3>Name: {val.Name}</h3>
           <h3>Brand: {val.Brand}</h3>
@@ -91,12 +99,14 @@ function App() {
           <h3>Quantity: {val.Quantity}</h3>
           <h3>Price($): {val.Price}</h3>
           {""}
-          <button>Delete item</button>
+
+          <button>Update</button>
+          <button onClick={() => deleteItem(val._id)}>Delete item</button>
         </div>
       })}
 
     </div>
-  );
+  );  
 }
 
 export default App;
