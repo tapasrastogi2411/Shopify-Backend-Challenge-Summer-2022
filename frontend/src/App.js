@@ -71,22 +71,26 @@ function App() {
           type="text"
           onChange={(event) => {
             setItemDescription(event.target.value);
-          }}/>
+          }} />
 
         <label>Quantity</label><input
           type="number"
           onChange={(event) => {
             setQuantity(event.target.value);
-          }}/>
+          }} />
 
         <label>Price</label>
         <input
           type="number"
           onChange={(event) => {
             setPrice(event.target.value);
-          }}/>
+          }} />
 
         <button onClick={addToList}> Add new item</button> </>
+
+      <a className="button" href="/inventory/export">
+        Export (CSV)
+      </a>
 
       <h1>Item List</h1>
 
