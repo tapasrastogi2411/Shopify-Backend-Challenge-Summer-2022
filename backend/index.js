@@ -62,6 +62,21 @@ app.delete('/delete/:id', async (req, res) => {
 
 })
 
+app.put("/update/:id", async (req, res) => {
+
+    await itemModel.findById(req.params.id).then((newInventory) => {
+
+        for (const element in req.body) {
+            newInventory[element] = req.body[element];
+        }
+        newInventory
+            .save()
+            .then(() => res.status(200).json(newInventory))
+            .catch((err) => res.status(400).json(err));
+    })
+
+})
+
 // Starting the server
 app.listen(process.env.PORT ?? 3001, () => {
     console.log('Server running on port 3001...')
