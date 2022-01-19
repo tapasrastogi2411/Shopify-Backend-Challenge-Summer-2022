@@ -7,7 +7,6 @@
 - Tools and Technologies used
 - Setting up the Development environment
 - Testing the features/functionalities
-- A sample of testing the `Update` route through POSTMAN
 - Notes and Caveats
 
 ## Task and Goal of this Challenge
@@ -78,3 +77,7 @@ You can now see the frontend running on http://localhost:3000/
 - Testing the `update` feature is recommended to be done through Postman, since it is the only feature which isnt available on the frontend(BUT WORKS perfectly on the backend)
 - Click the `Export(CSV)` button on the frontend to test out the `exportCSV` feature! :)
 
+## Notes and Caveats
+- `Update` feature isnt implemented on the Frontend, BUT WORD perfectly fine on the BACKEND, which is what matters
+
+If you have reached this part, thank you for taking the time to go through my project :)
