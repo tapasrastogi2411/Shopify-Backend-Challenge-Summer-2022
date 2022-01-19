@@ -49,6 +49,10 @@ function App() {
     alert("Item deleted successfully! Please refresh the page to see the changes");
   }
 
+  const exportCSV = async () => {
+    
+  };
+
   return (
     <div className="App">
       <h1> Inventory Manager</h1>
@@ -71,22 +75,24 @@ function App() {
           type="text"
           onChange={(event) => {
             setItemDescription(event.target.value);
-          }}/>
+          }} />
 
         <label>Quantity</label><input
           type="number"
           onChange={(event) => {
             setQuantity(event.target.value);
-          }}/>
+          }} />
 
         <label>Price</label>
         <input
           type="number"
           onChange={(event) => {
             setPrice(event.target.value);
-          }}/>
+          }} />
 
         <button onClick={addToList}> Add new item</button> </>
+
+        <button onClick={exportCSV}> Export into CSV! </button>
 
       <h1>Item List</h1>
 
