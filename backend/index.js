@@ -1,5 +1,7 @@
 // index.js is the entry point of our server
 
+require('dotenv').config(); // To use environment variables here to safely store information
+
 const express = require('express'); // Setting up our express server 
 const mongoose = require('mongoose') // Importing and setting up our MongoDB database
 const cors = require('cors') // To interact with the APIs that we make
@@ -12,7 +14,7 @@ app.use(express.json())
 app.use(cors())
 
 // Adding the connection to our MongoDB database
-mongoose.connect("mongodb+srv://newUser-1:vaangevaange1@iventory-crud.aek0k.mongodb.net/inventoryTracking?retryWrites=true&w=majority", {
+mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@iventory-crud.aek0k.mongodb.net/inventoryTracking?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
 });
 
