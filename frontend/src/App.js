@@ -88,7 +88,7 @@ function App() {
 
         <button onClick={addToList}> Add new item</button> </>
 
-      <a className="button" href="/inventory/export">
+      <a className="button" href="http://localhost:3001/inventory/export">
         Export (CSV)
       </a>
 
