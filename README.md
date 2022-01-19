@@ -6,6 +6,8 @@
 - Additional feature implemented
 - Tools and Technologies used
 - Setting up the Development environment
+- Testing the features/functionalities
+- A sample of testing the `Update` route through POSTMAN
 - Notes and Caveats
 
 ## Task and Goal of this Challenge
@@ -68,5 +70,11 @@ To run the back-end do:
 	$ npm run devStart
   
 You can now see the frontend running on http://localhost:3000/
-	
+
+## Testing the features/functionalities
+
+- You have two ways of testing the backend endpoints(`CRUD`)and the `exportCSV` feature - through the local website(or deployed website) OR through Postman(recommended)
+- Testing `Create`, `Read`, `Delete` and the `exportCSV` feature is recommended to be done through the frontend
+- Testing the `update` feature is recommended to be done through Postman, since it is the only feature which isnt available on the frontend(BUT WORKS perfectly on the backend)
+- Click the `Export(CSV)` button on the frontend to test out the `exportCSV` feature! :)
 
