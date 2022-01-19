@@ -79,5 +79,6 @@ You can now see the frontend running on http://localhost:3000/
 
 ## Notes and Caveats
 - `Update` feature isnt implemented on the Frontend, BUT WORD perfectly fine on the BACKEND, which is what matters
+- To view the action of any operation on my frontend, you need to refresh the page
 
-If you have reached this part, thank you for taking the time to go through my project :)
+If you have reached this part, you are awesome and thank you for taking the time to go through my project :)
