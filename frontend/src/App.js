@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
 
-    Axios.get("http://localhost:3001/read").then((response) => {
+    Axios.get("/read").then((response) => {
       setItemList(response.data)
     })
 
@@ -27,7 +27,7 @@ function App() {
   // Function to add the useState values into our MongoDB database 
 
   const addToList = () => {
-    Axios.post("http://localhost:3001/insert", {
+    Axios.post("/insert", {
 
       itemName: itemName,
       brandName: brandName,
@@ -42,7 +42,7 @@ function App() {
 
   // Function to delete an item
   const deleteItem = (id) => {
-    Axios.delete(`http://localhost:3001/delete/${id}`, {
+    Axios.delete(`/delete/${id}`, {
 
     });
 
@@ -88,7 +88,7 @@ function App() {
 
         <button onClick={addToList}> Add new item</button> </>
 
-      <a className="button" href="http://localhost:3001/inventory/export">
+      <a className="button" href="/inventory/export">
         Export (CSV)
       </a>
 

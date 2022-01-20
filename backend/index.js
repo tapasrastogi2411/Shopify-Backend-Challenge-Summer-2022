@@ -1,5 +1,7 @@
 // index.js is the entry point of our server
 
+const path = require('path') // Combines strings together
+
 require('dotenv').config(); // To use environment variables here to safely store information
 
 const express = require('express'); // Setting up our express server 
@@ -11,6 +13,7 @@ const itemModel = require("./schemas/itemSchema") // Importing the schema into t
 
 // Code to allow us to receive information from the frontend in JSON format, necessary to get all of our information correctly
 app.use(express.json())
+app.use(express.static(path.join(__dirname, "..", "frontend", "build")));
 app.use(cors())
 
 // Adding the connection to our MongoDB database
@@ -18,7 +21,7 @@ mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
 });
 
-mongoose.connection.once("open", () => console.log("works"));
+mongoose.connection.once("open", () => console.log("MongoDB Database connected!"));
 
 // Creating a route - Whenever someone comes across this route, I want to enter/create an item in the database
 app.post('/insert', async (req, res) => {
@@ -103,6 +106,11 @@ app.get("/inventory/export", async (req, res) => {
         res.send(createCSV(inventory));
     })
         .catch((err) => res.status(400).json(err));
+})
+
+app.get("/", async (req, res) => {
+
+    res.sendFile(path.join(__dirname, "..", "frontend", "build", "index.html"))
 })
 
 // Starting the server
