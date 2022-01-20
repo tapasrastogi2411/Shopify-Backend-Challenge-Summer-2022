@@ -14,7 +14,7 @@ app.use(express.json())
 app.use(cors())
 
 // Adding the connection to our MongoDB database
-mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@iventory-crud.aek0k.mongodb.net/inventoryTracking?retryWrites=true&w=majority`, {
+mongoose.connect(`mongodb+srv://newUser-1:vaangevaange1@iventory-crud.aek0k.mongodb.net/inventoryTracking?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
 });
 
@@ -40,7 +40,6 @@ app.post('/insert', async (req, res) => {
 })
 
 // Creating the `read` route of the CRUD functionality - This allows a user to see what items are currently present in the inventory/database
-
 app.get('/read', async (req, res) => {
 
     itemModel.find({}, (err, result) => {
@@ -55,7 +54,6 @@ app.get('/read', async (req, res) => {
 
 
 // Creating the `delete` route of the CRUD functionality - This allows a user to delete an item already in the database
-
 app.delete('/delete/:id', async (req, res) => {
 
     const id = req.params.id
@@ -64,6 +62,7 @@ app.delete('/delete/:id', async (req, res) => {
 
 })
 
+// Creating the `update`route of the CRUD functionality - This allows a user to delete an item already in the database
 app.put("/update/:id", async (req, res) => {
 
     await itemModel.findById(req.params.id).then((newInventory) => {
@@ -77,6 +76,31 @@ app.put("/update/:id", async (req, res) => {
             .catch((err) => res.status(400).json(err));
     })
 
+})
+
+// A helper function which converts json into CSV values
+const createCSV = (inventory) => {
+    const columnHeaders = ["_id", "Name", "Brand", "Description", "Quantity", "Price"];
+
+    let csv = columnHeaders.join(",");
+
+    inventory.forEach((item) => {
+        csv += `\n` + columnHeaders.map((key) => item[key]).join(",");
+    });
+
+    return csv;
+};
+
+// Creating a route which exports the given data into a CSV file
+app.get("/inventory/export", async (req, res) => {
+
+    itemModel.find().then((inventory) => {
+
+        res.setHeader("'Content-Type'", "'text/csv'");
+        res.attachment(`export-${new Date().toISOString()}.csv`);
+        res.send(createCSV(inventory));
+    })
+        .catch((err) => res.status(400).json(err));
 })
 
 // Starting the server

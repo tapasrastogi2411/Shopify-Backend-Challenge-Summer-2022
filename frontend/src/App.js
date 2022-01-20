@@ -49,10 +49,6 @@ function App() {
     alert("Item deleted successfully! Please refresh the page to see the changes");
   }
 
-  const exportCSV = async () => {
-    
-  };
-
   return (
     <div className="App">
       <h1> Inventory Manager</h1>
@@ -92,7 +88,9 @@ function App() {
 
         <button onClick={addToList}> Add new item</button> </>
 
-        <button onClick={exportCSV}> Export into CSV! </button>
+      <a className="button" href="/inventory/export">
+        Export (CSV)
+      </a>
 
       <h1>Item List</h1>
 
