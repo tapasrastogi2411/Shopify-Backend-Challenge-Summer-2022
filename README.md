@@ -1,5 +1,10 @@
 # Inventory Manager - Shopify Backend Challenge - Summer 2022
 
+## Deployment
+You can view and access the frontend of this site at: https://shopifybackendsummer2022.herokuapp.com/
+
+Note: Please have a look at the `Notes and Caveats` section at the end to see the limitations in testing the features/functionalities entirely through the frontend :)
+
 ## Table of Contents
 - Task and Goal of this challenge
 - Features and functionalities completed
@@ -78,7 +83,7 @@ You can now see the frontend running on http://localhost:3000/
 - Click the `Export(CSV)` button on the frontend to test out the `exportCSV` feature! :)
 
 ## Notes and Caveats
-- `Update` feature isnt implemented on the Frontend, BUT WORD perfectly fine on the BACKEND, which is what matters
+- `Update` feature isnt implemented on the Frontend, BUT WORKS perfectly fine on the BACKEND, which is what matters
 - To view the action of any operation on my frontend, you need to refresh the page
 
 If you have reached this part, you are awesome and thank you for taking the time to go through my project :)
