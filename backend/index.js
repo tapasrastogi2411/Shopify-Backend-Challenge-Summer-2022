@@ -18,6 +18,8 @@ mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
 });
 
+mongoose.connection.once("open", () => console.log("works"));
+
 // Creating a route - Whenever someone comes across this route, I want to enter/create an item in the database
 app.post('/insert', async (req, res) => {
 
