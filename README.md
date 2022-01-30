@@ -1,7 +1,7 @@
 # Inventory Manager - Shopify Backend Challenge - Summer 2022
 
 ## Deployment
-You can view and access the frontend of this site at: https://shopifybackendsummer2022.herokuapp.com/
+You can view and access the frontend of this site at: https://shopifybackendsummer2022.herokuapp.com/ 
 
 Note: Please have a look at the `Notes and Caveats` section at the end to see the limitations in testing the features/functionalities entirely through the frontend :)
 
